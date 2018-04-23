@@ -40,19 +40,21 @@ public class DynamicParams {
         minCoins[0] = 0;
         // Iterates through each value between 1 and init to find the minimum number of coins for each value
         // The actual value for the minimum number of coins to be used will be held at minCoins[init]
+        // This works by building off of the toCompare value initially calculated from the base case.
+        // By the time val is equal to init, the value that needs to be broken down into coins, toCompare +1
+        // should be the minimum number of coins that can be used to build init
         for (int val = 1; val <= init; val++) {
             for (int j = 0; j < coins.length; j++) {
                 if (coins[j] <= val) {
                     int toCompare = minCoins[val - coins[j]];
                     if ((toCompare != Integer.MAX_VALUE) && (toCompare + 1 < minCoins[val])) {
                         minCoins[val] = toCompare + 1;
+                        if(val == init){
+                            coinsUsed.add(coins[j]);
+                        }
                     }
                 }
             }
-        }
-        int m = 0;
-        while(m < minCoins[init]){
-
         }
         // Iterates through the arraylist to print the values
         for (int j = 0; j < coinsUsed.size(); j++) {
