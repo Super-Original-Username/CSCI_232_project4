@@ -47,7 +47,7 @@ public class Tests {
         toCompare.add(5);
         toCompare.add(1);
         toCompare.add(1);
-        int in = 26;
+        int in = 42;
         assertEquals(toCompare, DynamicParams.coinChange(arr,in));
     }
 }
