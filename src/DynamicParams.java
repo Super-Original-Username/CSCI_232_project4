@@ -1,7 +1,8 @@
 /*
  * Authors: Ethan Fison (aswordlessninja on github), Alex Salois (asalois), Zan Rost-Montieth (Zan-RostMontieth)
  * Date: 4/23/18
- * Overview: Dynamic change-making algorithm. Also uses jUnit for tests to make sure it works proper-like
+ * Overview: Dynamic change-making algorithm. Also uses jUnit for tests to make sure it works proper-like.
+ * Modified version of the greedy change-making algorithm from lab 7
  */
 
 import java.util.ArrayList;
@@ -27,22 +28,34 @@ public class DynamicParams {
                 throw new IllegalArgumentException("There cannot be any values less than 1 in the coins array");
             }
         }
-        ArrayList coinsUsed = new ArrayList<Integer>(); // ArrayList so we don't need to adjust the size of an array for the coins
+
+        // The arraylist is used so we don't need to resize arrays if the number of coins exceeds the original size
+        ArrayList coinsUsed = new ArrayList<Integer>();
         /* We'll be using all values between 1 and init to find the minimum change that can be used, so we need this
          * to iterate through everything */
         int[] minCoins = new int[init + 1];
-        Arrays.fill(minCoins, 0); // Initializes each element in the array to be 0
+        // Initializes each element in the array to be the largest possible int value
+        Arrays.fill(minCoins, Integer.MAX_VALUE);
+        // Base case
+        minCoins[0] = 0;
         // Iterates through each value between 1 and init to find the minimum number of coins for each value
-        for(int val = 1; val <= init; val++){
-            for(int j = 0; j<coins.length; j++){
-                if(coins[j]<=val){
-                    if(minCoins[val-coins[j]]!=0 && minCoins[val-coins[j]] + 1 < minCoins[val])
-                        minCoins[val] = minCoins[val-coins[j]] + 1;
+        // The actual value for the minimum number of coins to be used will be held at minCoins[init]
+        for (int val = 1; val <= init; val++) {
+            for (int j = 0; j < coins.length; j++) {
+                if (coins[j] <= val) {
+                    int toCompare = minCoins[val - coins[j]];
+                    if ((toCompare != Integer.MAX_VALUE) && (toCompare + 1 < minCoins[val])) {
+                        minCoins[val] = toCompare + 1;
+                    }
                 }
             }
         }
-        while(int m < )
-        for (int j = 0; j < coinsUsed.size(); j++) { // Iterates through the arraylist to print the values
+        int m = 0;
+        while(m < minCoins[init]){
+
+        }
+        // Iterates through the arraylist to print the values
+        for (int j = 0; j < coinsUsed.size(); j++) {
             if (j == coinsUsed.size() - 1) {
                 System.out.println(coinsUsed.get(j));
             } else
