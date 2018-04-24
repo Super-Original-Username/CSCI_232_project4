@@ -1,4 +1,6 @@
-Authors:(gitHub username in parentheses) Ethan Fison (aswordlessninja), Alex Salois (asalois), Zan Rost-Montieth (Zan-RostMontieth)
+Authors:(gitHub username in parentheses)
+Ethan Fison (aswordlessninja),  Alex Salois (asalois),  Zan Rost-Montieth (Zan-RostMontieth)
+
 Date: 4/23/18
 Overview: Dynamic change-making algorithm. Also uses jUnit for tests to make sure it works proper-like.
 Modified version of the greedy change-making algorithm from lab 7
