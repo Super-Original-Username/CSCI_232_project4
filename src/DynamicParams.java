@@ -51,7 +51,7 @@ public class DynamicParams {
         minCoins[0] = 0;
         // Iterates through each value between 1 and init to find the minimum number of coins for each value
         // The actual value for the minimum number of coins to be used will be held at minCoins[init]
-        // Simultaneously finds all coins used and places them into the coinsUsed array at an index relative to the inital
+        // Simultaneously finds all coins used and places them into the coinsUsed array at an index relative to the initial
         // value added + the new number.(sorry if I explained that poorly, if you want to see what I mean, enter an
         // init that will have different results from the current expected case in the test cases)
         for (int val = 0; val <= init; val++) {
