@@ -3,6 +3,7 @@
  * Date: 4/23/18
  * Overview: Dynamic change-making algorithm. Also uses jUnit for tests to make sure it works proper-like.
  * Modified version of the greedy change-making algorithm from lab 7
+ * Uses JUNIT 5 for all tests
  */
 
 import java.util.ArrayList;
@@ -41,9 +42,9 @@ public class DynamicParams {
         minCoins[0] = 0;
         // Iterates through each value between 1 and init to find the minimum number of coins for each value
         // The actual value for the minimum number of coins to be used will be held at minCoins[init]
-        // This works by building off of the toCompare value initially calculated from the base case.
-        // By the time val is equal to init, the value that needs to be broken down into coins, toCompare +1
-        // should be the minimum number of coins that can be used to build init
+        // Simultaneously finds all coins used and places them into the coinsUsed array at an index relative to the inital
+        // value added + the new number.(sorry if I explained that poorly, if you want to see what I mean, enter an
+        // init that will have different results from the current expected case in the test cases)
         for (int val = 0; val <= init; val++) {
             int count = val;
             int n = coins[coins.length - 1];
