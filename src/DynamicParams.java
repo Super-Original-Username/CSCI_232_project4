@@ -9,7 +9,7 @@
  * so from the seeIfItWorks test in tests.java. You'll also need to edit the items added to the arrayList, as those are
  * used in the comparison when running the test. If you only want to check the output of the program, don't worry about
  * the arrayList, you should just be able to edit the "in" variable in that test, and JUnit should spit out the error,
- * with both the expected and actual outputs
+ * with both the expected and actual outputs.
  *
  * Sorry if most of the commits are from me (Ethan). There wasn't really a whole lot to change from lab 7, so I ended up
  * doing the majority of the commits when we met up to work on this.
