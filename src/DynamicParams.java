@@ -31,6 +31,7 @@ public class DynamicParams {
 
         // The arraylist is used so we don't need to resize arrays if the number of coins exceeds the original size
         ArrayList coinsUsed = new ArrayList<Integer>();
+        int[] totalCoins = new int[init+1];
         /* We'll be using all values between 1 and init to find the minimum change that can be used, so we need this
          * to iterate through everything */
         int[] minCoins = new int[init + 1];
@@ -43,35 +44,28 @@ public class DynamicParams {
         // This works by building off of the toCompare value initially calculated from the base case.
         // By the time val is equal to init, the value that needs to be broken down into coins, toCompare +1
         // should be the minimum number of coins that can be used to build init
-        for (int val = 1; val <= init; val++) {
-            for (int j = 0; j < coins.length; j++) {
-                if (coins[j] <= val) {
-                    int toCompare = minCoins[val - coins[j]];
-                    if ((toCompare != Integer.MAX_VALUE) && (toCompare + 1 < minCoins[val])) {
-                        minCoins[val] = toCompare + 1;
+        for (int val = 0; val <= init; val++) {
+            int count = val;
+            int n = coins[coins.length - 1];
+            for (int c = 0; c < coins.length; c++) {
+                if (coins[c] <= val) {
+                    int j = coins[c];
+                    if (minCoins[val - j] + 1 < count) {
+                        count = minCoins[val - j] + 1;
+                        n = j;
                     }
+                    minCoins[val] = count;
+                    totalCoins[val] = n;
                 }
             }
         }
-        int temp = 0;
-        int iter = 0;
-        int lag = 0;
-        int i = 0;
-        while (iter < minCoins[init]) {
-            if (temp + coins[i] <= init) {
-                temp += coins[i];
-                iter++;
-            } else {
-                if (i == coins.length - 1) {
-                    i = 0;
-                } else
-                    i++;
-            }
-            if (iter == minCoins[init]) {
-                lag++;
-                iter = 0;
-            }
+        int temp = init;
+        while(temp > 0){
+            int thisCoin = totalCoins[temp];
+            coinsUsed.add(thisCoin);
+            temp = temp - thisCoin;
         }
+
         // Iterates through the arraylist to print the values
         for (int j = 0; j < coinsUsed.size(); j++) {
             if (j == coinsUsed.size() - 1) {
@@ -81,6 +75,7 @@ public class DynamicParams {
         }
         return coinsUsed;
     }
-
-
 }
+
+
+
