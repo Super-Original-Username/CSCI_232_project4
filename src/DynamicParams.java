@@ -49,11 +49,27 @@ public class DynamicParams {
                     int toCompare = minCoins[val - coins[j]];
                     if ((toCompare != Integer.MAX_VALUE) && (toCompare + 1 < minCoins[val])) {
                         minCoins[val] = toCompare + 1;
-                        if(val == init){
-                            coinsUsed.add(coins[j]);
-                        }
                     }
                 }
+            }
+        }
+        int temp = 0;
+        int iter = 0;
+        int lag = 0;
+        int i = 0;
+        while (iter < minCoins[init]) {
+            if (temp + coins[i] <= init) {
+                temp += coins[i];
+                iter++;
+            } else {
+                if (i == coins.length - 1) {
+                    i = 0;
+                } else
+                    i++;
+            }
+            if (iter == minCoins[init]) {
+                lag++;
+                iter = 0;
             }
         }
         // Iterates through the arraylist to print the values
