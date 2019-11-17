@@ -1,5 +1,5 @@
 Authors:(gitHub username in parentheses)
-Ethan Fison (aswordlessninja),  Alex Salois (asalois),  Zan Rost-Montieth (Zan-RostMontieth)
+Ethan Fison (aswordlessninja/super-original-username),  Alex Salois (asalois),  Zan Rost-Montieth (Zan-RostMontieth)
 
 Date: 4/23/18
 Overview: Dynamic change-making algorithm. Also uses jUnit for tests to make sure it works proper-like.
